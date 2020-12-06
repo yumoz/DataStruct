@@ -4,28 +4,46 @@ void TestSeqlist()
 {
 
 	SL s;
-	InitSeqlist(&s);
+	SeqListInit(&s);
+
 	printf("尾插: \n");
-	PushBack(&s, 1);
-	PushBack(&s, 2);
-	PushBack(&s, 3);
-	PushBack(&s, 4);
-	PushBack(&s, 5);
+	SeqListPushBack(&s, 1);
+	SeqListPushBack(&s, 2);
+	SeqListPushBack(&s, 3);
+	SeqListPushBack(&s, 4);
+	SeqListPushBack(&s, 5);
+	SeqListPrint(&s);
 
-	PrintSeqlist(&s);
 	printf("头插:\n");
-	PushFront(&s, -1);
-	PushFront(&s, -2);
-
-	PrintSeqlist(&s);
+	SeqListPushFront(&s, -1);
+	SeqListPushFront(&s, -2);
+	SeqListPrint(&s);
 
 	printf("头删:\n");
-	PopFront(&s);
-	PrintSeqlist(&s);
+	SeqListPopFront(&s);
+	SeqListPrint(&s);
 
 	printf("尾删:\n");
-	PopBack(&s);
-	PrintSeqlist(&s);
+	SeqListPopBack(&s);
+	SeqListPrint(&s);
+
+	printf("中间插入：\n");
+	SeqListInsert(&s, 3, 10);
+	SeqListPrint(&s);
+
+	printf("中间删除：\n");
+	SeqListErase(&s, 3);
+	SeqListPrint(&s);
+
+	printf("Find it:\n");
+	int key = -1;
+	int ret =SeqListFind(&s, key);
+	printf("	%4d是第%d个位置的数字\n",key, ret);
+
+	printf("销毁顺序表\n");
+	SeqListDestory(&s);
+	SeqListPrint(&s);
+
 
 }
 int main()
