@@ -36,6 +36,7 @@ void SListEraseAfter(SListNode * pos);
 //单链表的销毁
 void SListDestory(SListNode * plist);
 
+void SListDestroy(SListNode *pList);
 //单链表打印
 void SListPrint(SListNode*phead);
 

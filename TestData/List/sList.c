@@ -153,27 +153,27 @@ SListNode* SListFind(SListNode* plist, SListDataType x)
 }
 
 //当前位置之后插入，之前插入可以使用双向链表，
-//void SListInsertAfter(SListNode* pos, SListDataType x)
-//{
-//	assert(pos);
-//	SListNode* next = pos->next;//先保存next的地址
-//
-//	// pos newnode next
-//	SListNode* newnode = BuySListNode(x);
-//	pos->next = newnode;
-//	newnode->next = next;
-//}
-
-//单链表有缺点，哈希图和单链表
 void SListInsertAfter(SListNode* pos, SListDataType x)
 {
 	assert(pos);
-	
-	SListNode* newnode = BuySListNode(x);
-	newnode->next = pos->next;
-	pos->next = newnode;
+	SListNode* next = pos->next;//先保存next的地址
 
+	// pos newnode next
+	SListNode* newnode = BuySListNode(x);
+	pos->next = newnode;
+	newnode->next = next;
 }
+
+//单链表有缺点，哈希图和单链表
+//void SListInsertAfter(SListNode* pos, SListDataType x)
+//{
+//	assert(pos);
+//	
+//	SListNode* newnode = BuySListNode(x);//申请一个节点
+//	newnode->next = pos->next;//把要插入的节点给申请的节点连接
+//	pos->next = newnode;//把新的节点给插入位置之后的节点
+//
+//}
 //删除后一位置
 //void SListEraseAfter(SListNode* pos)
 //{
@@ -198,4 +198,17 @@ void SListEraseAfter(SListNode* pos)
 		pos->next = nextnext;
 		free(next);
 	}
+}
+//链表销毁
+void SListDestroy(SListNode *pList)
+{
+	SListNode *p;//让p指向头结点
+	while (pList->next){//当头结点的指针域不为0，即不是链尾时
+		p = pList->next;
+		pList->next = p->next;
+		free(p);//删除p
+		//pList->next--;
+	}
+	pList->next--;
+	pList->next = NULL;//最后不要忘了让指向头结点的指针的指针的值为0
 }
