@@ -30,3 +30,15 @@ void SeqListErase(SL* ps, int pos);
 
 //顺序表查找
 int SeqListFind(SL* ps, SLDatatype x);
+
+//打印顺序表
+void SeqListPrint(SL* ps);
+
+//销毁顺序表
+void SeqListDestory(SL* ps);
+
+//顺序表排序
+void BubbleSort(SL*ps);
+
+//二分查找
+int Binarysearch(SL*ps, SLDatatype data);
