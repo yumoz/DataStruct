@@ -1,13 +1,16 @@
+/*
+内容：动态顺序表头文件
+*/
 
-#pragma once
+#pragma once//亦可用 #ifndef #define #endif
 #include<stdio.h>
 #include<assert.h>
 #include<stdlib.h>
 #include<malloc.h>
 
-#define _CRT_SECURE_NO_WARNINGS 1
+#define _CRT_SECURE_NO_WARNINGS 1//可以选择4996 disable 代替
 
-typedef int SLDataType;
+typedef int SLDataType; //对数据类型进行重定义
 typedef struct
 {
 	SLDataType  *array;//存储空间的基地址

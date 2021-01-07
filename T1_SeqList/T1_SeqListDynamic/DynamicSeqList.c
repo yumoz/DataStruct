@@ -15,6 +15,7 @@ void SeqListInit(SL *s)//初始化动态顺序表
 	s->capacity = 3;
 }
 
+//检测容量，看顺序表是否饱和
 void CheckCapacity(SL *s)
 {
 	if (s->size == s->capacity)
@@ -22,7 +23,6 @@ void CheckCapacity(SL *s)
 		s->array = (SLDataType*)realloc(s->array, 2 * s->capacity*sizeof(SLDataType));
 		assert(s->array);
 		s->capacity *= 2;
-
 	}
 }
 
@@ -33,8 +33,6 @@ void SeqListPushBack(SL *s, SLDataType x)//
 	CheckCapacity(s);
 	s->array[s->size] = x;
 	s->size++;
-
-
 	//SeqListInsert(s, s->size, x);//way 2
 }
 
@@ -115,9 +113,10 @@ void SeqListInsert(SL *s, size_t pos, SLDataType x)
 }
 
 //顺序表删除
+//指定位置删除
 void SeqListErase(SL *s, size_t pos)
 {
-	assert(s && pos < s->size);
+	assert(s && pos < s->size);//assert括号里面语句写的是正确的范围。或者可以使用 if语句判断，比较明了
 	size_t start = pos;
 	while (start < s->size - 1){
 		s->array[start] = s->array[start + 1];
@@ -139,7 +138,7 @@ void SeqListPrint(SL *s)//打印动态顺序表
 	size_t i = 0;
 	for (; i < s->size; ++i)
 	{
-		printf("	%4d", s->array[i]);
+		printf("	%4d", s->array[i]);//空格保证的是 输出格式控制，%4d也是格式控制
 	}
 	printf("\n");
 }
